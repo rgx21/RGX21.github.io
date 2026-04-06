@@ -18,7 +18,6 @@
       min-height: 100vh;
     }
 
-    /* ── Layout ── */
     .page {
       max-width: 680px;
       margin: 0 auto;
@@ -129,6 +128,14 @@
 
     .tool-card:hover::before { opacity: 1; }
 
+    /* TradingView card — blue accent */
+    .tool-card.tv::before { background: #2962FF; }
+
+    .tool-card.tv:hover {
+      border-color: #2962FF;
+      box-shadow: 0 4px 20px rgba(41,98,255,0.1);
+    }
+
     .tool-icon {
       width: 44px;
       height: 44px;
@@ -143,10 +150,23 @@
       transition: all 0.18s;
     }
 
-    .tool-card:hover .tool-icon {
+    .tool-card:not(.tv):hover .tool-icon {
       background: #D97706;
       border-color: #D97706;
     }
+
+    .tool-icon.tv-icon {
+      background: #EEF2FF;
+      border-color: #C7D2FE;
+    }
+
+    .tool-card.tv:hover .tool-icon.tv-icon {
+      background: #2962FF;
+      border-color: #2962FF;
+    }
+
+    .tv-logo { width: 22px; height: 22px; transition: filter 0.18s; }
+    .tool-card.tv:hover .tv-logo { filter: brightness(0) invert(1); }
 
     .tool-info { flex: 1; }
 
@@ -171,9 +191,21 @@
       flex-shrink: 0;
     }
 
-    .tool-card:hover .tool-arrow {
-      color: #D97706;
-      transform: translateX(3px);
+    .tool-card:not(.tv):hover .tool-arrow { color: #D97706; transform: translateX(3px); }
+    .tool-card.tv:hover .tool-arrow       { color: #2962FF; transform: translateX(3px); }
+
+    .ext-badge {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #6366F1;
+      background: #EEF2FF;
+      border: 1px solid #C7D2FE;
+      padding: 2px 7px;
+      border-radius: 4px;
+      margin-left: 8px;
+      vertical-align: middle;
     }
 
     /* ── Footer ── */
@@ -193,10 +225,7 @@
       font-weight: 500;
     }
 
-    .footer-left strong {
-      color: #374151;
-      font-weight: 700;
-    }
+    .footer-left strong { color: #374151; font-weight: 700; }
 
     .footer-right {
       font-size: 12px;
@@ -205,7 +234,6 @@
       letter-spacing: 0.04em;
     }
 
-    /* ── Responsive ── */
     @media (max-width: 500px) {
       .hero h1 { font-size: 30px; }
       .tool-card { padding: 16px 18px; gap: 14px; }
@@ -228,11 +256,11 @@
       <p>A collection of calculators and tools built for Indian market traders. Fast, clean, no fluff.</p>
     </div>
 
-    <!-- Tools -->
-    <div class="section-label">Tools —</div>
+    <!-- Calculators -->
+    <div class="section-label">Calculators — </div>
 
     <div class="tools-grid">
-      
+
       <a class="tool-card" href="https://rgx21.github.io/CAGR/">
         <div class="tool-icon">📈</div>
         <div class="tool-info">
@@ -241,7 +269,7 @@
         </div>
         <div class="tool-arrow">→</div>
       </a>
-      
+
       <a class="tool-card" href="https://rgx21.github.io/Compounding-Calc/">
         <div class="tool-icon">🚀</div>
         <div class="tool-info">
@@ -250,7 +278,7 @@
         </div>
         <div class="tool-arrow">→</div>
       </a>
-      
+
       <a class="tool-card" href="https://rgx21.github.io/Tax">
         <div class="tool-icon">⚖️</div>
         <div class="tool-info">
@@ -259,17 +287,17 @@
         </div>
         <div class="tool-arrow">→</div>
       </a>
-    
+
       <a class="tool-card" href="https://rgx21.github.io/Compounding-with-Tax/">
         <div class="tool-icon">💸</div>
         <div class="tool-info">
           <div class="tool-name">Compounding with Tax Calculator</div>
-          <div class="tool-desc">See how taxation impacts your compounding wealth — year by year, rupee by rupee</div>
+          <div class="tool-desc">See how taxation impacts your compounding wealth — year by year, rupee by rupee.</div>
         </div>
         <div class="tool-arrow">→</div>
       </a>
-    
-    <a class="tool-card" href="https://rgx21.github.io/Average-Price-Calc/">
+
+      <a class="tool-card" href="https://rgx21.github.io/Average-Price-Calc/">
         <div class="tool-icon">⌀</div>
         <div class="tool-info">
           <div class="tool-name">Average Price Calculator</div>
@@ -277,7 +305,33 @@
         </div>
         <div class="tool-arrow">→</div>
       </a>
-  </div>
+
+    </div>
+
+    <!-- TradingView Scripts -->
+    <div class="section-label">TradingView Scripts — </div>
+
+    <div class="tools-grid">
+
+      <a class="tool-card tv" href="https://www.tradingview.com/script/35UaHo0a-Drawdown-from-ATH/" target="_blank">
+        <div class="tool-icon tv-icon">
+          <svg class="tv-logo" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="28" height="28" rx="6" fill="#2962FF"/>
+            <path d="M6 19L11 10L15 16L18 12L22 19H6Z" fill="white"/>
+          </svg>
+        </div>
+        <div class="tool-info">
+          <div class="tool-name">
+            Drawdown % from ATH
+            <span class="ext-badge">TradingView ↗</span>
+          </div>
+          <div class="tool-desc">Indicator - severity-based color coding, metrics table, and drawdown tracking from all-time high.</div>
+        </div>
+        <div class="tool-arrow">→</div>
+      </a>
+
+    </div>
+
     <!-- Footer -->
     <div class="footer">
       <div class="footer-left">Built by <strong>RGX</strong> · Indian Markets</div>
